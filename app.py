@@ -4,15 +4,15 @@ import numpy as np
 import pandas as pd
 import streamlit as st
 
-# 1. Load the saved files
+
 model = joblib.load("car_price_model.pkl")
 columns = list(model.feature_names_in_)
 options = json.load(open("options.json"))
 
-# 2. Page title
+
 st.title("Used Car Price Estimator")
 
-# 3. Input boxes
+
 brand = st.selectbox("Brand", options["brand"])
 fuel = st.selectbox("Fuel type", options["fuel_type"])
 transmission = st.selectbox("Transmission", options["transmission_type"])
@@ -25,7 +25,7 @@ mileage = st.number_input("Mileage (km per litre)", 5.0, 35.0, 18.0)
 engine = st.number_input("Engine size (cc)", 600, 6000, 1200)
 power = st.number_input("Max power (bhp)", 30.0, 700.0, 85.0)
 
-# 4. When the button is clicked, predict
+
 if st.button("Estimate price"):
     row = pd.DataFrame([{
         "vehicle_age": age,
