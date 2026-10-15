@@ -11,10 +11,14 @@ The problem:
 Buyers and sellers of used cars often don't know what a fair price is. This project predicts a selling price from the car's details, so both sides have a starting point.
 
 Data:
+
 CarDekho-style used car dataset for India: 15,411 listings, 14 columns.
 Target: selling_price in rupees.
+
 Features: brand, vehicle age, km driven, seller type, fuel type, transmission, mileage, engine size, max power, seats.
+
 Cleaning
+
 Step	Rows removed	Rows left
 Start		15,411
 Dropped columns that add nothing (Unnamed: 0 row number, car_name, model), then removed duplicate rows	168	15,243
@@ -44,7 +48,9 @@ under ₹3 lakh	427	₹39,693
 ₹6-10 lakh	885	₹83,233
 ₹10-20 lakh	360	₹178,744
 above ₹20 lakh	161	₹670,268
-Limitations
+
+Limitations:
+
 Luxury cars are poorly predicted. Error grows sharply with price. The 161 test cars above ₹20 lakh (about 5% of the test set) produce about a third of the total error.
 Rare brands have very few examples. For instance, the dataset has only 3 Bentleys, all 9-10 years old. A Random Forest cannot predict far outside the prices it has seen, so a 5-year-old Bentley gets a price of about ₹10 lakh, far below the real value.
 Treat the estimate as a starting point. The model is most reliable for everyday cars under about ₹10 lakh.
@@ -60,7 +66,8 @@ streamlit run app.py
 
 Use Python 3.13 and the same scikit-learn version the model was saved with (see requirements.txt).
 
-Files
+Files:
+
 app.py: the Streamlit app
 car_price_model.pkl: the trained Random Forest
 options.json: dropdown options for the form
