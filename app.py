@@ -6,7 +6,7 @@ import streamlit as st
 
 # 1. Load the saved files
 model = joblib.load("car_price_model.pkl")
-columns = joblib.load("model_columns.pkl")
+columns = list(model.feature_names_in_)
 options = json.load(open("options.json"))
 
 # 2. Page title
